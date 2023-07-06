@@ -4,9 +4,9 @@
   "description": "Vehicle spare parts project",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon --exec babel-node -r dotenv/config server.js",
     "seed": "node seeders/seeds.js",
+    "start": "npm run seed && node server.js",
+    "dev": "nodemon --exec babel-node -r dotenv/config server.js",
     "lint": "eslint"
   },
   "repository": {
