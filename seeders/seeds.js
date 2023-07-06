@@ -2,16 +2,19 @@ const bcrypt = require("bcryptjs");
 const { User }=require("../models/users");
 const { connect }=require("../config/config.js");
 const { default: mongoose } = require("mongoose");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const seedUser=async()=>{
     const adminUser=[{
         firstName: "IRAFASHA",
         lastName:"Gedeon",
         gender:"Male",
-        email: "irafasha.jedy12@gmail.com",
+        email: process.env.USER_EMAIL,
         telNumber:"0780689938",
         role:"administrator",
-        password:await bcrypt.hash("1234", 12),
+        password:await bcrypt.hash(process.env.USER_PASSWORD, 12),
         passwordResetToken:"",
         profilePicture:[],
         createdAt:""
@@ -20,10 +23,10 @@ const seedUser=async()=>{
     try {
         await User.deleteMany({});
         await User.insertMany(adminUser);
-        console.log("Seed success")
+        console.log("Default user created succesfully")
     } catch (error) {
 
-        console.log("Seed Fail\n",error);
+        console.log("Creating default user failed\n",error);
         
     }
 
