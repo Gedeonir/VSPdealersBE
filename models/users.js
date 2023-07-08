@@ -26,7 +26,8 @@ const User = mongoose.model(
       required:true,
     },
     role:{
-      type:String
+      type:String,
+      defaultValue:"user"
     },
     password: {
       type: String,
@@ -36,12 +37,13 @@ const User = mongoose.model(
       type: String,
       default: "",
     },
-    profilePicture: {
-      type: Array,
-      defaultValue:[],
-    },
     createdAt:{
-      type:String
+      type:String,
+      defaultValue:Date.now()
+    },
+    isActive:{
+      type:Boolean,
+      defaultValue:false
     }
   })
 );

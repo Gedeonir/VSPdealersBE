@@ -16,8 +16,8 @@ const seedUser=async()=>{
         role:"administrator",
         password:await bcrypt.hash(process.env.USER_PASSWORD, 12),
         passwordResetToken:"",
-        profilePicture:[],
-        createdAt:""
+        createdAt:Date.now(),
+        isActive:true
     }]
 
     try {
