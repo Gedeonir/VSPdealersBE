@@ -6,7 +6,7 @@ const Password = process.env.USER_PASSWORD;
 
 const login = {
   summary: "Login",
-  description: "Admin",
+  description: "",
   requestBody: {
     content: {
       "application/json": {

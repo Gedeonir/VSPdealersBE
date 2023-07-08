@@ -77,11 +77,7 @@ const RegisterUser=async(req,res)=>{
         });
 
         return res.status(200).json({
-<<<<<<< HEAD
             message:"User created successfully\n. We have send you account verification email to  verify your account,check your inbox/spam folder",
-=======
-            message:"User created successfully",
->>>>>>> e12fb2b (CRUD operations for users and other related endpoints)
         })
         
     } catch (error) {
