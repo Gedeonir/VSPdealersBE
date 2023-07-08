@@ -65,12 +65,8 @@ const RegisterUser=async(req,res)=>{
         <div>
             <div style="font-weight:700"><h1>Account verification</h1></div>
             <p>Dear <span style='font-weight:700;'>${newUser.firstName} ${newUser.lastName}</span></p>,
-<<<<<<< HEAD
             <p>Welcome to Vehicle spare parts website. Please click the link below to verify your account.<br/><br/></p>
             ${URL}
-=======
-            <p>Welcome to Vehicle spare parts website. Please click the link below to verify your account.<br/><br/>${URL}</p>
->>>>>>> e12fb2b (CRUD operations for users and other related endpoints)
         </div>
         
         `;
@@ -203,7 +199,7 @@ const updateProfile=async(req,res)=>{
         })
         
     } catch (error) {
-        return res.status(200).json({
+        return res.status(500).json({
             message:"Unable to update profile"
         })
     }
