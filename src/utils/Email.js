@@ -13,7 +13,7 @@ const sendEmail = async (options) => {
   });
 
   const emailOptions = {
-    from: `VSP ${process.env.EMAIL_USERNAME}>`,
+    from: `VSP ${process.env.EMAIL_USERNAME}`,
     to: options.email,
     subject: options.subject,
     html: options.message,
