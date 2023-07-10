@@ -12,8 +12,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: "DEV",
-      allowedFormats: ['jpeg', 'png', 'jpg', 'mp3'],
+      folder: "VSPD",
+      allowedFormats: ['jpeg', 'png', 'jpg'],
     },
   
   });

@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const authenticationDoc=require('../Authentication/authenticationDoc.js')
 dotenv.config();
-const userDoc=require('../Users/userDocs.js')
+// const userDoc=require('../Users/userDocs.js')
 
 const swaggerDoc = {
     openapi: "3.0.0",
@@ -37,7 +37,7 @@ const swaggerDoc = {
     ],
     paths: {
         ...authenticationDoc,
-        ...userDoc
+        // ...userDoc
     },
   }
   module.exports = swaggerDoc

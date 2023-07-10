@@ -6,9 +6,9 @@ const{ parser}=require('../utils/multer')
 
 const router=express.Router();
 
-router.post('/addProductImages',protect,restrictTo("administrator","operator"),parser.array('product_image'),addProductsImage);
+router.patch('/addProductImages/:product',protect,restrictTo("administrator","operator"),parser.array('product_image'),addProductsImage);
 router.post('/addNewProduct',protect,restrictTo("administrator","operator"),addNewProductsDetails);
-router.route('/:product').get(getOneProduct).delete(protect,restrictTo("administrator","operator"),deleteProduct).put(protect,restrictTo("administrator","operator"),updateProduct);
+router.route('/:product').get(getOneProduct).delete(protect,restrictTo("administrator","operator"),deleteProduct).patch(protect,restrictTo("administrator","operator"),updateProduct);
 router.get('/',getAllProducts);
 
 
