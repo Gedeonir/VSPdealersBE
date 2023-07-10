@@ -45,7 +45,7 @@ const login = {
         },
       },
     },
-    400: {
+    409: {
     description: "Empty fields",
       content: {
         "application/json": {
@@ -61,7 +61,7 @@ const login = {
         },
       },
     },
-    400: {
+    409: {
     description: "email or password don't match",
     content: {
       "application/json": {
@@ -215,7 +215,7 @@ const resetPassword={
         },
       },
     },
-    400: {
+    409: {
       description: "Empty field",
       content: {
         "application/json": {
@@ -231,7 +231,7 @@ const resetPassword={
         },
       },
     },
-    400: {
+    409: {
       description: "When token is not valid",
       content: {
         "application/json": {
@@ -328,7 +328,7 @@ const changePassword = {
         },
       },
     },
-    400: {
+    409: {
     description: "Old password is incorrect",
       content: {
         "application/json": {
@@ -344,7 +344,7 @@ const changePassword = {
         },
       },
     },
-    400: {
+    409: {
     description: "New passwords do not match",
     content: {
       "application/json": {

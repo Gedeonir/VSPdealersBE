@@ -3,7 +3,7 @@ const cors=require("cors");
 const swaggerUI = require("swagger-ui-express")
 const swaggerDocumentation = require("./src/docs/swagger.js")
 const authenticationRouter=require("./src/Authentication/authenticationRoutes.js")
-
+const usersRouter=require('./src/Users/userRoutes.js')
 
 const app = express()
 app.use(express.json())
@@ -22,7 +22,7 @@ app.use(
   swaggerUI.setup(swaggerDocumentation)
 )
 
-app.use("/api/v1/users",authenticationRouter);
+app.use("/api/v1/users",authenticationRouter,usersRouter);
 
 
 module.exports = app

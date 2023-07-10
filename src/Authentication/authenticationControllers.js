@@ -17,15 +17,21 @@ const login = async (req, res) => {
     try {
       const { email, password } = req.body;
       if (!email || !password) {
-        return res.status(400).json({
+        return res.status(409).json({
           message:"Email and password must not be empty",
         });
       }
   
       const user= await User.findOne({email:email });
+
+      if(!user.isActive){
+        return res.status(409).json({
+          message:"You need to verify your account first!"
+        })
+      }
   
       if (!user|| !(await bcrypt.compare(password, user.password))) {
-        return res.status(400).json({
+        return res.status(409).json({
           message:"email or password don't match",
         });
       }
@@ -60,28 +66,32 @@ const login = async (req, res) => {
       const Token = generateToken();
   
       user.passwordResetToken = Token;
-      await user.save();
-  
-      //3)Send it to User's email
-      const resetURL = `${process.env.BACKEND_URL}/users/resetpassword/${Token}`;
-  
-      const message = `Forgot your password! please click here:${resetURL}. to reset your password.\n If you didn't forget your password please ignore this email.`;
+      await user.save();      
   
       //3) send email
+
+        const URL = `<div style="width:50%;margin-left:auto;margin-right:auto"><a href='${process.env.BACKEND_URL}/users/resetpassword/${Token}' style='padding:10px 30px;color:#fff;text-decoration:none; background-color:#ef4444; font-weight:700; border-radius:10px;'>Reset password</a></div>`;
+        
+        const message = `
+        <div>
+            <div style="font-weight:700"><h1>Password Reset Link</h1></div>
+            <p>Please click on link below to reset your password.\n <strong>ignore this email if you did not request to reset password</strong><br/><br/>${URL}</p>
+        </div>
+        
+        `;
   
       await sendEmail({
         email: user.email,
-        subject: "Your password Reset Token (valid for 10 min )",
+        subject: "Reset your password",
         message,
       });
       res.status(200).json({
-        message: "Token sent to email",
-        token: Token,
+        message: "We have sent you an email to reset your password,check you email inbox/spam",
       });
     } catch (error) {
       res.status(500).json({
         message:
-          "Error while sending the email please try again after some times",
+          "Unable to reset password,Try again later",
         err: error.stack,
       });
     }
@@ -98,7 +108,7 @@ const login = async (req, res) => {
       const Token = req.params.token;
   
       if (!password) {
-        return res.status(400).json({
+        return res.status(409).json({
           message: "Password must not be empty",
         });
       }
@@ -110,7 +120,7 @@ const login = async (req, res) => {
       const user= await User.findOne({passwordResetToken: Token });
   
       if (!user) {
-        return res.status(400).json({
+        return res.status(409).json({
           message: "Invalid token",
         });
       }
@@ -155,11 +165,11 @@ const login = async (req, res) => {
       const password = await bcrypt.compare(oldpassword, user.password);
       if (!password) {
         return res
-          .status(400)
+          .status(409)
           .json({ message: "The old password is wrong, correct it and try again" });
       }
       if (newpassword1 !== newpassword2) {
-        return res.status(400).json({ message: "new password does not match" });
+        return res.status(409).json({ message: "new password does not match" });
       }
   
       //6.hash password
