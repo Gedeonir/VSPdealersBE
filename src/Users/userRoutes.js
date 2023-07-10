@@ -7,7 +7,8 @@ const router=express.Router();
 
 router.post('/register',RegisterUser);
 router.get('/',getAllUsers);
-router.route('/:user').delete(protect,restrictTo("administrator","operator"),deleteUser).get(getUser);
+router.delete('/:user/delete',protect,restrictTo("administrator","operator"),deleteUser)
+router.get('/:user',getUser);
 router.patch('/updateProfile',protect,updateProfile);
 router.patch('/verifyAccount/:user',verifyAccount);
 

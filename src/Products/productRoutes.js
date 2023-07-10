@@ -8,7 +8,9 @@ const router=express.Router();
 
 router.patch('/addProductImages/:product',protect,restrictTo("administrator","operator"),parser.array('product_image'),addProductsImage);
 router.post('/addNewProduct',protect,restrictTo("administrator","operator"),addNewProductsDetails);
-router.route('/:product').get(getOneProduct).delete(protect,restrictTo("administrator","operator"),deleteProduct).patch(protect,restrictTo("administrator","operator"),updateProduct);
+router.get('/:product',getOneProduct)
+router.delete('/:product/delete',protect,restrictTo("administrator","operator"),deleteProduct)
+router.patch('/:product/update',protect,restrictTo("administrator","operator"),updateProduct);
 router.get('/',getAllProducts);
 
 
