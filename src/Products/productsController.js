@@ -99,7 +99,7 @@ const addProductsImage=async(req,res)=>{
         }
 
         if (!req.files) {
-            return res.status(404).json({
+            return res.status(409).json({
                 message:"You need to insert one or more files"
             })
         }
