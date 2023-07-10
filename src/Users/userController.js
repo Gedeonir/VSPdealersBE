@@ -199,7 +199,7 @@ const updateProfile=async(req,res)=>{
         })
         
     } catch (error) {
-        return res.status(200).json({
+        return res.status(500).json({
             message:"Unable to update profile"
         })
     }
