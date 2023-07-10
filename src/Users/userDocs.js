@@ -437,7 +437,7 @@ const userDoc={
     "api/v1/users/:user":{
         get:getOneUser
     },
-    "api/v1/users/:user":{
+    "api/v1/users/:user/delete":{
         delete:deleteUser
     },
     "api/v1/users/":{
