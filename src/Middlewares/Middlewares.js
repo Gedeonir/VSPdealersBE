@@ -37,18 +37,18 @@ const protect = async (req, res, next) => {
   next();
 };
 
-// const restrictTo = (...roles) => {
-//   return (req, res, next) => {
-//     if (!roles.includes(req.user.roleName)) {
-//       return res.status(403).json({
-//         message: 'You are not allowed to perform this action.For more info, contact your site Admin',
-//       });
-//     }
-//     next();
-//   };
-// };
+const restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        message: 'You are not allowed to perform this action.For more info, contact your site Admin',
+      });
+    }
+    next();
+  };
+};
 
   module.exports = {
     protect,
-    // restrictTo,
+    restrictTo,
   };
