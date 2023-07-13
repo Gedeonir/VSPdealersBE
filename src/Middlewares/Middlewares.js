@@ -13,7 +13,7 @@ const protect = async (req, res, next) => {
   try{
 
     if (!req.headers.authorization||!req.headers.authorization.startsWith("Bearer")) {
-      return res.status(409).json({
+      return res.status(401).json({
         message: "You must login first!",
       });
     }
@@ -28,7 +28,7 @@ const protect = async (req, res, next) => {
     const freshUser = await User.findOne({_id: decoded.uuid});
 
     if (!freshUser) {
-      return res.status(401).json({
+      return res.status(409).json({
         message: "Your Token malfunctioned please Login again",
       });
     }

@@ -5,6 +5,7 @@ const Email = process.env.USER_EMAIL;
 const Password = process.env.USER_PASSWORD;
 
 const login = {
+  tags:["Authentication"],
   summary: "Login",
   description: "",
   requestBody: {
@@ -98,6 +99,7 @@ const login = {
 
 
 const forgotPassword={
+  tags:["Authentication"],
   summary: "Forgot password",
   description: "Admin forgot password api",
   requestBody: {
@@ -170,6 +172,7 @@ const forgotPassword={
 };
 
 const resetPassword={
+  tags:["Authentication"],
   summary: "Reset password",
   description: "Admin reset password api",
   parameters: [
@@ -284,6 +287,7 @@ const resetPassword={
 
 
 const changePassword = {
+  tags:["Authentication"],
   summary: "Change password",
   description: "Admin can change password",
   requestBody: {
