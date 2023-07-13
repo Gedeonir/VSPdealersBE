@@ -31,10 +31,6 @@ new Schema({
         type:Array,
         default:[]
     },
-    isSoldOut:{
-        type:Boolean,
-        default:false
-    },
 }))
 
 module.exports={Product}

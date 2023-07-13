@@ -101,6 +101,51 @@ const deleteProduct={
         }
     ],
     responses:{
+        401:{
+            description:"User is not authenticated",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not authorised",
+                            data:{
+                                message:"You must login first"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        403:{
+            description:"Forbidden",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Forbidden",
+                            data:{
+                                message:"You are not allowed to perform this action.For more info, contact your site Admin'"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"JWT errors",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                        }
+                    }
+                }
+            }
+        },
         200:{
             description:"Product deleted succesfully",
             content:{
@@ -193,6 +238,51 @@ const updateProduct={
     },
 
     responses:{
+        401:{
+            description:"User is not authenticated",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not authorised",
+                            data:{
+                                message:"You must login first"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        403:{
+            description:"Forbidden",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Forbidden",
+                            data:{
+                                message:"You are not allowed to perform this action.For more info, contact your site Admin'"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"JWT errors",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                        }
+                    }
+                }
+            }
+        },
         200:{
             description:"Product updated succesfully",
             content:{
@@ -277,6 +367,51 @@ const registerProduct={
     },
 
     responses:{
+        401:{
+            description:"User is not authenticated",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not authorised",
+                            data:{
+                                message:"You must login first"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        403:{
+            description:"Forbidden",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Forbidden",
+                            data:{
+                                message:"You are not allowed to perform this action.For more info, contact your site Admin'"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"JWT errors",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                        }
+                    }
+                }
+            }
+        },
         200:{
             description:"Added new product",
             content:{
@@ -376,6 +511,51 @@ const addProductImages={
     },
 
     responses:{
+        401:{
+            description:"User is not authenticated",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not authorised",
+                            data:{
+                                message:"You must login first"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        403:{
+            description:"Forbidden",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Forbidden",
+                            data:{
+                                message:"You are not allowed to perform this action.For more info, contact your site Admin'"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"JWT errors",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                        }
+                    }
+                }
+            }
+        },
         200:{
             description:"Images added succesfully",
             content:{

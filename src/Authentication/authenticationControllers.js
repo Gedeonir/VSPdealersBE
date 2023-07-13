@@ -24,16 +24,16 @@ const login = async (req, res) => {
   
       const user= await User.findOne({email:email });
 
-      if(!user.isActive){
-        return res.status(409).json({
-          message:"You need to verify your account first!"
-        })
-      }
-  
       if (!user|| !(await bcrypt.compare(password, user.password))) {
         return res.status(409).json({
           message:"email or password don't match",
         });
+      }
+
+      if(!user.isActive){
+        return res.status(409).json({
+          message:"You need to verify your account first!"
+        })
       }
   
       const token = signToken(user._id);
@@ -44,7 +44,7 @@ const login = async (req, res) => {
     } catch (error) {
       res.status(500).json({
         message: "Internal server Error",
-        err: error,
+        err: error.stack,
       });
     }
   };
