@@ -153,6 +153,12 @@ const updateProduct=async(req,res)=>{
     try {
         const updateProduct=await Product.findOne({_id:product});
 
+        if(!updateProduct){
+            return res.status(404).json({
+                message:"Product not found"
+            })
+        }
+
         updateProduct.productName=productName;
         updateProduct.productType=productType;
         updateProduct.descriptions=descriptions;

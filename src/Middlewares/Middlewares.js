@@ -10,31 +10,37 @@ const protect = async (req, res, next) => {
   let token;
 
   // Get token and Check if is there.
+  try{
 
-  if (!req.headers.authorization||!req.headers.authorization.startsWith("Bearer")) {
-    return res.status(409).json({
-      message: "You must login first!",
-    });
+    if (!req.headers.authorization||!req.headers.authorization.startsWith("Bearer")) {
+      return res.status(409).json({
+        message: "You must login first!",
+      });
+    }
+
+    token = req.headers.authorization.split(" ")[1];
+
+    //  Token verification
+    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRETE);
+
+    // Check if User exist
+
+    const freshUser = await User.findOne({_id: decoded.uuid});
+
+    if (!freshUser) {
+      return res.status(401).json({
+        message: "Your Token malfunctioned please Login again",
+      });
+    }
+
+    req.user = freshUser;
+
+    next();
+  }catch(error){
+    return res.status(500).json({
+      error:error
+    })
   }
-
-  token = req.headers.authorization.split(" ")[1];
-
-  //  Token verification
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRETE);
-
-  // Check if User exist
-
-  const freshUser = await User.findOne({_id: decoded.uuid});
-
-  if (!freshUser) {
-    return res.status(401).json({
-      message: "Your Token malfunctioned please Login again",
-    });
-  }
-
-  req.user = freshUser;
-
-  next();
 };
 
 const restrictTo = (...roles) => {

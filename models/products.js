@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const {Schema}=require('mongoose');
 
-const Product=mongoose.model("inventory",
+const Product=mongoose.model("products",
 new Schema({
     productName:{
         type:String,
