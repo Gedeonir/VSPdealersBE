@@ -428,22 +428,22 @@ const deleteUser={
 }
 
 const userDoc={
-    "api/v1/users/register":{
+    "/api/v1/users/register":{
         post:RegisterUser
     },
-    "api/v1/users/verifyAccount/:user":{
+    "/api/v1/users/verifyAccount/:user":{
         patch:verifyAccount
     },
-    "api/v1/users/:user":{
+    "/api/v1/users/:user":{
         get:getOneUser
     },
-    "api/v1/users/:user/delete":{
+    "/api/v1/users/:user/delete":{
         delete:deleteUser
     },
-    "api/v1/users/":{
+    "/api/v1/users/":{
         get:getallUsers
     },
-    "api/v1/users/updateProfile":{
+    "/api/v1/users/updateProfile":{
         patch:updateProfile
     },
 }

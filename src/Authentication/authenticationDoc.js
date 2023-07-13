@@ -16,12 +16,12 @@ const login = {
             email: {
               type: "string",
               description: "email of the user",
-              example: `${Email}`,
+              example: `example@gmail.com`,
             },
             password: {
               type: "string",
               description: "your password",
-              example: `${Password}`,
+              example: `example1234`,
             },
           },
         },

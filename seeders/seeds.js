@@ -8,11 +8,11 @@ dotenv.config();
 
 const seedUser=async()=>{
     const adminUser=[{
-        firstName: "IRAFASHA",
-        lastName:"Gedeon",
+        firstName: "Admin",
+        lastName:"User",
         gender:"Male",
         email: process.env.USER_EMAIL,
-        telNumber:"0780689938",
+        telNumber:"070000000",
         role:"administrator",
         password:await bcrypt.hash(process.env.USER_PASSWORD, 12),
         passwordResetToken:"",

@@ -446,22 +446,22 @@ const addProductImages={
 
 
 const productDoc={
-    "api/v1/products/addNewProduct":{
+    "/api/v1/products/addNewProduct":{
         post:registerProduct
     },
-    "api/v1/products/:product":{
+    "/api/v1/products/:product":{
         get:getOneProduct
     },
-    "api/v1/products/addProductImages":{
+    "/api/v1/products/addProductImages":{
         patch:addProductImages
     },
-    "api/v1/products/:product/delete":{
+    "/api/v1/products/:product/delete":{
         delete:deleteProduct
     },
-    "api/v1/products/":{
+    "/api/v1/products/":{
         get:getallProducts
     },
-    "api/v1/products/:product/update":{
+    "/api/v1/products/:product/update":{
         patch:updateProduct
     },
 }

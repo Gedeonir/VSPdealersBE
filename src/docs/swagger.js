@@ -7,9 +7,9 @@ const productDoc=require('../Products/productDoc.js');
 const swaggerDoc = {
     openapi: "3.0.0",
     info: {
-      title: "Vehicle spare parts project powered By Gedeonir",
+      title: "Online store project",
       version: "0.0.1",
-      description: "This is Vehicle spare parts project RESTful APIs Documetation",
+      description: "This is Online store project RESTful APIs Documetation",
     },
     servers: [
       {
