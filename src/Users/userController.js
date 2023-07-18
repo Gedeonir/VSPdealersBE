@@ -31,11 +31,14 @@ const RegisterUser=async(req,res)=>{
 
         const {valid, reason, validators} = await isEmailValid(email);
 
-        console.log(valid,reason,validators);
 
         if(!valid){
             return res.status(409).json({
-                message:"Please provide valid email"
+                message:"Please provide valid email",
+                data:{
+                    valid,
+                    reason
+                }
             })
         }
 
