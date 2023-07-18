@@ -210,7 +210,7 @@ const verifyAccount={
     description:"Verify account",
     parameters:[
         {
-            name:"userID",
+            name:"user",
             in:"path",
             description:"user account id",
             type:"string",

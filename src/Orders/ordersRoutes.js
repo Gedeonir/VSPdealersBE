@@ -8,6 +8,6 @@ router.get("/",protect,restrictTo("administrator","operator"),getOrders);
 router.post("/placeOrder",protect,checkProducts,placeOrder);
 router.get("/myOrders",protect,getMyOrders);
 router.get("/:order",getOneOrder);
-router.patch("/:order/changeStatus",changeOrderStatus);
+router.patch("/:order/changeStatus",protect,restrictTo("administrator","operator"),changeOrderStatus);
 
 module.exports=router
