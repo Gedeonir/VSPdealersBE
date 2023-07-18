@@ -37,7 +37,8 @@ const RegisterUser=async(req,res)=>{
                 message:"Please provide valid email",
                 data:{
                     valid,
-                    reason
+                    reason,
+                    validators
                 }
             })
         }
