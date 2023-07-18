@@ -29,7 +29,7 @@ const RegisterUser=async(req,res)=>{
             })
         }
 
-        const {valid, reason, validators} = await isEmailValid(email);
+        const {valid, reason, validators} = await Promise.all(await isEmailValid(email));
 
         console.log(valid,reason,validators);
 
