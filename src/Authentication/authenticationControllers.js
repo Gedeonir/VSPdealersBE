@@ -70,7 +70,7 @@ const login = async (req, res) => {
   
       //3) send email
 
-        const URL = `<div style="width:50%;margin-left:auto;margin-right:auto"><a href='${process.env.BACKEND_URL}/users/resetpassword/${Token}' style='padding:10px 30px;color:#fff;text-decoration:none; background-color:#ef4444; font-weight:700; border-radius:10px;'>Reset password</a></div>`;
+        const URL = `<div style="width:50%;margin-left:auto;margin-right:auto"><a href='${process.env.BACKEND_URL}/api/v1/users/resetpassword/${Token}' style='padding:10px 30px;color:#fff;text-decoration:none; background-color:#ef4444; font-weight:700; border-radius:10px;'>Reset password</a></div>`;
         
         const message = `
         <div>

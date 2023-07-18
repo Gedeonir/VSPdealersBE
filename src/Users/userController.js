@@ -31,6 +31,8 @@ const RegisterUser=async(req,res)=>{
 
         const {valid, reason, validators} = await isEmailValid(email);
 
+        console.log(valid,reason,validators);
+
         if(!valid){
             return res.status(409).json({
                 message:"Please provide valid email"
@@ -60,7 +62,7 @@ const RegisterUser=async(req,res)=>{
         });
 
 
-        const URL = `<div style="width:50%;margin-left:auto;margin-right:auto"><a href='${process.env.BACKEND_URL}/users/verifyAccount/${newUser._id}' style='padding:10px 30px;color:#fff;text-decoration:none; background-color:#ef4444; font-weight:700; border-radius:10px;'>Verify account</a></div>`;
+        const URL = `<div style="width:50%;margin-left:auto;margin-right:auto"><a href='${process.env.BACKEND_URL}/api/v1/users/verifyAccount/${newUser._id}' style='padding:10px 30px;color:#fff;text-decoration:none; background-color:#ef4444; font-weight:700; border-radius:10px;'>Verify account</a></div>`;
         const message = `
         <div>
             <div style="font-weight:700"><h1>Account verification</h1></div>
