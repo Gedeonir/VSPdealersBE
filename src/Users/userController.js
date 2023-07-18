@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 dotenv.config();
 
 async function isEmailValid(email) {
-    return emailValidator.validate(email)
+    return await emailValidator.validate(email)
   }
 
 
@@ -29,7 +29,7 @@ const RegisterUser=async(req,res)=>{
             })
         }
 
-        const {valid, reason, validators} = await Promise.all(await isEmailValid(email));
+        const {valid, reason, validators} = await isEmailValid(email);
 
         console.log(valid,reason,validators);
 
