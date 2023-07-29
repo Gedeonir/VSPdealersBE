@@ -98,19 +98,17 @@ const addProductsImage=async(req,res)=>{
             })
         }
 
+
         if (!req.files) {
             return res.status(409).json({
                 message:"You need to insert one or more files"
             })
         }
 
-        const images=[];
         for (const file of req.files) {
             const { path } = file;
-            images.push(path);
+            findProduct.productsImages .push(path);
         };
-
-        findProduct.productsImages  = images;
         await findProduct.save(); 
 
         return res.status(200).json({
@@ -119,6 +117,39 @@ const addProductsImage=async(req,res)=>{
     } catch (error) {
         return res.status(500).json({
             message:"Adding images of products failed"
+        })
+    }
+}
+
+const deleteProductImage=async (req,res)=>{
+    const product=req.params.product;
+    const indexOfImage=req.params.index;
+
+    try {
+        const findProduct=await Product.findOne({_id:product});
+
+        if(!findProduct){
+            return res.status(404).json({
+                message:"No such product found"
+            })
+        }
+
+        if (indexOfImage>findProduct.productsImages.length-1) {
+            return res.status(200).json({
+                message:"Index not found"
+            });
+        }
+
+        findProduct.productsImages.splice(indexOfImage,1);
+        await findProduct.save();
+
+        return res.status(200).json({
+            message:"Image deleted succesfully"
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            message:"Deleting image of product failed"
         })
     }
 }
@@ -182,4 +213,4 @@ const updateProduct=async(req,res)=>{
 }
 
 
-module.exports={addProductsImage,addNewProductsDetails,deleteProduct,updateProduct,getAllProducts,getOneProduct}
+module.exports={addProductsImage,addNewProductsDetails,deleteProduct,updateProduct,getAllProducts,getOneProduct,deleteProductImage}

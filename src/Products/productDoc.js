@@ -497,12 +497,13 @@ const addProductImages={
         content:{
             "multipart/form-data":{
                 schema:{
-                    type:"array",
+                    type: "object",
                     properties:{
                         product_image:{
                             type:'string',
                             description:"image of the product",
                             example:"xxxxx.png",
+                            format: "binary"
                         },
                     }
                 }
@@ -624,6 +625,139 @@ const addProductImages={
 
 }
 
+const deleteProductImages={
+    tags:["Product"],
+    summary:"Deleting images of product",
+    description:"Deleting image of product",
+    parameters:[
+        {
+            name:"product",
+            in:"path",
+            description:"product id",
+            type:"string",
+        },
+        {
+            name:"index",
+            in:"path",
+            description:"Index of image",
+            type:"number",
+        }
+
+    ],
+    responses:{
+        401:{
+            description:"User is not authenticated",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not authorised",
+                            data:{
+                                message:"You must login first"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        403:{
+            description:"Forbidden",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Forbidden",
+                            data:{
+                                message:"You are not allowed to perform this action.For more info, contact your site Admin'"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"JWT errors",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                        }
+                    }
+                }
+            }
+        },
+        200:{
+            description:"Images deleted succesfully",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Ok",
+                            data:{
+                                message:"Images deleted succesfully"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        409:{
+            description:"Empty field",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Conflict",
+                            data:{
+                                message:"You need to insert one or more files"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        404:{
+            description:"Product not found",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"not Found",
+                            data:{
+                                message:"No such product found"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        500:{
+            description:"Adding images of products failed",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            status:"Internal server error",
+                            data:{
+                                message:"deleting image of products failed"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+    }
+
+}
+
 
 const productDoc={
     "/api/v1/products/addNewProduct":{
@@ -634,6 +768,9 @@ const productDoc={
     },
     "/api/v1/products/addProductImages/{product}":{
         patch:addProductImages
+    },
+    "/api/v1/products/deleteProducImages/{product}/image/{index}":{
+        patch:deleteProductImages
     },
     "/api/v1/products/{product}/delete":{
         delete:deleteProduct
