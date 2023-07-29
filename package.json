@@ -37,7 +37,8 @@
     "nodemailer": "^6.9.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",

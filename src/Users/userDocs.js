@@ -210,7 +210,7 @@ const verifyAccount={
     description:"Verify account",
     parameters:[
         {
-            name:"userID",
+            name:"user",
             in:"path",
             description:"user account id",
             type:"string",
@@ -277,7 +277,7 @@ const getOneUser={
     description:"retrieving one user info",
     parameters:[
         {
-            name:"userID",
+            name:"user",
             in:"path",
             description:"user account id",
             type:"string",
@@ -384,7 +384,7 @@ const deleteUser={
     description:"Deleting user",
     parameters:[
         {
-            name:"userID",
+            name:"user",
             in:"path",
             description:"user account id",
             type:"string",
@@ -431,13 +431,13 @@ const userDoc={
     "/api/v1/users/register":{
         post:RegisterUser
     },
-    "/api/v1/users/verifyAccount/:user":{
+    "/api/v1/users/verifyAccount/{user}":{
         patch:verifyAccount
     },
-    "/api/v1/users/:user":{
+    "/api/v1/users/{user}":{
         get:getOneUser
     },
-    "/api/v1/users/:user/delete":{
+    "/api/v1/users/{user}/delete":{
         delete:deleteUser
     },
     "/api/v1/users/":{

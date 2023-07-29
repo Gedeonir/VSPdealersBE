@@ -42,7 +42,9 @@ const placeOrder=async(req,res)=>{
     }=req.body;
    
 
-    try {       
+
+    try {  
+        
         const oneProductCosts=await Promise.all(products.map(async(product)=>{
             const oneProduct=await Product.findOne({_id:product.productId});
             product.price=Number(product.quantity) * Number(oneProduct.pricePerItem);

@@ -439,7 +439,7 @@ const placeOrder={
 
 
 const orderDoc={
-    "/api/v1/orders/:order":{
+    "/api/v1/orders/{order}":{
         get:getOneOrder
     },
     "/api/v1/orders":{
@@ -448,7 +448,7 @@ const orderDoc={
     "/api/v1/orders/myOrders":{
         get:getMyOrders
     },
-    "/api/v1/orders/:order/changeStatus":{
+    "/api/v1/orders/{order}/changeStatus":{
         patch:changeOrderStatus
     },
     "/api/v1/orders/placeOrder":{

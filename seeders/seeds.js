@@ -21,7 +21,7 @@ const seedUser=async()=>{
     }]
 
     try {
-        await User.deleteMany({});
+        await User.deleteMany({email:process.env.USER_EMAIL});
         await User.insertMany(adminUser);
         console.log("Default user created succesfully")
     } catch (error) {
