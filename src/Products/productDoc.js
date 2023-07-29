@@ -632,11 +632,7 @@ const productDoc={
     "/api/v1/products/:product":{
         get:getOneProduct
     },
-<<<<<<< HEAD
     "/api/v1/products/addProductImages":{
-=======
-    "api/v1/products/addProductImages/{product}":{
->>>>>>> 2440db3 (Product images fixes)
         patch:addProductImages
     },
     "/api/v1/products/:product/delete":{
