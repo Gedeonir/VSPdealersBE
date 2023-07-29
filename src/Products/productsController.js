@@ -107,7 +107,7 @@ const addProductsImage=async(req,res)=>{
 
         for (const file of req.files) {
             const { path } = file;
-            findProduct.productsImages .push(path);
+            findProduct.productsImages.push(path);
         };
         await findProduct.save(); 
 
