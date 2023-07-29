@@ -487,7 +487,7 @@ const addProductImages={
     description:"Adding new product",
     parameters:[
         {
-            name:"productID",
+            name:"product",
             in:"path",
             description:"product id",
             type:"string",
@@ -632,7 +632,7 @@ const productDoc={
     "/api/v1/products/{product}":{
         get:getOneProduct
     },
-    "/api/v1/products/addProductImages":{
+    "/api/v1/products/addProductImages/{product}":{
         patch:addProductImages
     },
     "/api/v1/products/{product}/delete":{
