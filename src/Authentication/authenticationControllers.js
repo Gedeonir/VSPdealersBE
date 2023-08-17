@@ -29,12 +29,6 @@ const login = async (req, res) => {
           message:"email or password don't match",
         });
       }
-
-      if(!user.isActive){
-        return res.status(409).json({
-          message:"You need to verify your account first!"
-        })
-      }
   
       const token = signToken(user._id);
       res.status(200).json({
